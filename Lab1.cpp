@@ -8,6 +8,7 @@ ALLEGRO_COLOR shapeColor();
 void draw_rectangle(ALLEGRO_COLOR color, const int W, const int H);
 void draw_triangle(ALLEGRO_COLOR color, const int W, const int H);
 void draw_filled_rectangle(ALLEGRO_COLOR color, const int W, const int H);
+void draw_circle(ALLEGRO_COLOR color, const int W, const int H);
 
 int main()
 {
@@ -37,6 +38,7 @@ int main()
 		draw_rectangle(shapeColor(), width, height);
 		draw_triangle(shapeColor(), width, height);
 		draw_filled_rectangle(shapeColor(), width, height);
+		draw_circle(shapeColor(), width, height);
 		al_flip_display();
 	}
 
@@ -68,9 +70,17 @@ void draw_triangle(ALLEGRO_COLOR color, const int W, const int H) {
 }
 
 void draw_filled_rectangle(ALLEGRO_COLOR color, const int W, const int H) {
-	int x1 = W / 2 - 30;
+	int x1 = W / 2 - 50;
 	int y1 = H / 2 - 20;
-	int x2 = W / 2 + 30;
+	int x2 = W / 2 + 10;
 	int y2 = H / 2 + 100;
 	al_draw_filled_rectangle(x1, y1, x2, y2, color);
+}
+
+void draw_circle(ALLEGRO_COLOR color, const int W, const int H) {
+	int cx = W / 2 + 55;
+	int cy = H / 2 + 10;
+	int r = 35;
+	float thickness = 2;
+	al_draw_circle(cx, cy, r, color, thickness);
 }
