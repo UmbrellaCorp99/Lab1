@@ -6,6 +6,8 @@
 #include <allegro5/allegro_primitives.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <thread>
+#include <chrono>
 
 //functions for defining the color for shapes and for drawing outlines of rectangles, triangles, circles, and filled-in rectangles
 ALLEGRO_COLOR shapeColor();
