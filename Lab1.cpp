@@ -3,9 +3,11 @@
 #include <allegro5/allegro_primitives.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
-int main()
+ALLEGRO_COLOR shapeColor();
+void draw_rectangle(ALLEGRO_COLOR color, const int W, const int H);
+
+int main(int argc, char **argv)
 {
 	ALLEGRO_DISPLAY* display = NULL;
 	int width = 800;
@@ -19,14 +21,33 @@ int main()
 	display = al_create_display(width, height);
 	if (!display) {
 		fprintf(stderr, "failed to create display! \n");
-		return -1'
+		return -1;
 	}
+	al_init_primitives_addon();
 
 	bool done = false;
 
+	al_clear_to_color(al_map_rgb(255, 255, 255));
+	al_flip_display();
+
 	while(!done){
+		al_clear_to_color(al_map_rgb(255, 255, 255));
+		draw_rectangle(shapeColor(), width, height);
+		al_flip_display();
 	}
 
 	al_destroy_display(display);
 }
 
+ALLEGRO_COLOR shapeColor() {
+	return (al_map_rgb(0, 0, 0));
+}
+
+void draw_rectangle(ALLEGRO_COLOR color, const int W, const int H) {
+	int x1 = W / 2 -100;
+	int y1 = H / 2 - 100;
+	int x2 = W / 2 + 100;
+	int y2 = H / 2 + 100;
+	float thickness = 2;
+	al_draw_rectangle(x1, y1, x2, y2, color, thickness);
+}
